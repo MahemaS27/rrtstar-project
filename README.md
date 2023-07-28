@@ -41,6 +41,22 @@ This project implements two popular path planning algorithms, Rapidly-Exploring 
 - You can modify the `start` and `goal` coordinates in `main.py` to test the algorithms on different start and goal points.
 - Adjust the parameters like `n_pts`, `goal_bias`, and `neighbor_size` to influence the behavior and performance of the algorithms.
 
+**Results**
+
+Below are the results for RRT and RRT*
+
+![RRT](results/RRT.png)
+
+### Depth-First Search (DFS)
+
+![RRT_star](results/RRT_star.png)
+
+### Terminal Output:
+
+![Terminal Output](results/terminal.PNG)
+
+
+
 **Note:**
 - The provided `ASU_Map.jpg` is used as a sample map. You can replace it with your own map by providing the file path in the `load_map` function.
 - The algorithms are designed for 2D path planning and might not be directly applicable to complex 3D environments.
