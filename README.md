@@ -47,8 +47,6 @@ Below are the results for RRT and RRT*
 
 ![RRT](results/RRT.png)
 
-### Depth-First Search (DFS)
-
 ![RRT_star](results/RRT_star.png)
 
 ### Terminal Output:
