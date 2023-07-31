@@ -1,7 +1,7 @@
 # RRT and RRT* - Robot Path Planning Algorithms for 2D Map Navigation
 
 **Project Description:**
-This project implements two popular path planning algorithms, Rapidly-Exploring Random Tree (RRT) and its optimized variant, RRT*, for 2D map navigation. The goal is to find a collision-free path between a start point and a goal point in a given map, which may contain obstacles. The algorithms work by iteratively expanding a tree-like data structure in the configuration space of the robot until the goal is reached.
+This project implements three popular path planning algorithms, Rapidly-Exploring Random Tree (RRT), RRT* and Informed RRT*, for 2D map navigation. The goal is to find a collision-free path between a start point and a goal point in a given map, which may contain obstacles. The algorithms work by iteratively expanding a tree-like data structure in the configuration space of the robot until the goal is reached.
 
 **Requirements:**
 - Python 3.x
@@ -10,8 +10,9 @@ This project implements two popular path planning algorithms, Rapidly-Exploring 
 - PIL (Python Imaging Library)
 
 **Project Structure:**
-- `main.py`: The main script to run the RRT and RRT* algorithms and visualize the results.
+- `main.py`: The main script to run the RRT, RRT*, and Informed RRT* algorithms and visualize the results.
 - `RRT.py`: Contains the implementation of the RRTPlanner class, which defines the RRT and RRT* algorithms.
+- `informed_RRTstar.py`: Contains the implementation of the Informed_RRTSTAR class, which defines the Informed RRT* algorithms
 - `ASU_Map.jpg`: The input map in JPEG format.
 
 **How to Use:**
@@ -20,7 +21,7 @@ This project implements two popular path planning algorithms, Rapidly-Exploring 
    ```
    pip install numpy matplotlib pillow
    ```
-3. Place the `main.py`, `RRT.py`, and `ASU_Map.jpg` files in the same directory.
+3. Place the `main.py`, `RRT.py`, `informed_RRTstar.py`, and `ASU_Map.jpg` files in the same directory.
 4. Modify the `start` and `goal` coordinates in `main.py` to match your desired start and end points on the map.
 5. Run the main script using the following command:
    ```
@@ -48,6 +49,8 @@ Below are the results for RRT and RRT*
 ![RRT](results/RRT.png)
 
 ![RRT_star](results/RRT_star.png)
+
+![Informed_RRTstar](results/Informed_RRTstar.png)
 
 ### Terminal Output:
 
