@@ -204,6 +204,9 @@ class Informed_RRTSTAR:
         plt.plot(self.goal.col, self.goal.row, markersize=5, marker='o', color='green')
         plt.text(self.goal.col, self.goal.row, 'End', color='black', fontsize=14, va='top', ha='center')
 
+        # Add title to the plot
+        plt.title(title)
+
         # Show image
         plt.show()
 
