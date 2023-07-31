@@ -1,7 +1,7 @@
 # RRT, RRT* and Informed RRT* - Robot Path Planning Algorithms for 2D Map Navigation
 
 **Project Description:**
-This project implements three popular path planning algorithms, Rapidly-Exploring Random Tree (RRT), RRT* and Informed RRT*, for 2D map navigation. The goal is to find a collision-free path between a start point and a goal point in a given map, which may contain obstacles. The algorithms work by iteratively expanding a tree-like data structure in the configuration space of the robot until the goal is reached.
+This project implements three popular path planning algorithms, Rapidly-Exploring Random Tree (RRT), RRT* and Informed RRT* for 2D map navigation. The goal is to find a collision-free path between a start point and a goal point in a given map, which may contain obstacles. The algorithms work by iteratively expanding a tree-like data structure in the configuration space of the robot until the goal is reached.
 
 **Requirements:**
 - Python 3.x
