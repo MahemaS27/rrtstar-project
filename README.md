@@ -48,7 +48,7 @@ Below are the results for RRT and RRT*
 
 ![RRT](results/RRT.png)
 
-![RRT_star](results/RRT_star.png)
+![RRT_star](results/RRTstar.png)
 
 ![Informed_RRTstar](results/Informed_RRTstar.png)
 
