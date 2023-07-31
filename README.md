@@ -33,11 +33,12 @@ This project implements three popular path planning algorithms, Rapidly-Explorin
 1. The `load_map` function in `main.py` loads the input map, rescales it, converts it to a binary representation, and returns a 2D numpy array.
 2. The `TreeNode` class in `RRT.py` and  `informed_RRTstar.py` represents a node in the RRT tree with its row and column coordinates, a parent node, and a cost.
 3. The `RRTPlanner` class in `RRT.py` implements the RRT and RRT* algorithms.
-4. The RRT algorithm randomly samples points in the map and extends the tree towards the sampled points until the goal is reached or the maximum number of iterations is reached.
-5. The RRT* algorithm is an optimized version of RRT that rewires the tree to reduce the path length.
-6. The Informed_RRTSTAR class in informed_RRTstar.py implements the Informed RRT* algorithm, an advanced version of RRT* that uses heuristics and a cost-to-go estimate to guide the sampling process towards the goal region, significantly improving convergence and optimality of the generated path.
-7. The algorithms use Euclidean distance for node selection and collision checking to ensure the generated paths are collision-free.
-8. The `visualize_map` function in both files generates a plot showing the map, RRT tree, and the final path (if found).
+4. The `Informed_RRTSTAR` class in `informed_RRTstar.py` implements the Informed RRT* algorithm, 
+5. The RRT algorithm randomly samples points in the map and extends the tree towards the sampled points until the goal is reached or the maximum number of iterations is reached.
+6. The RRT* algorithm is an optimized version of RRT that rewires the tree to reduce the path length.
+7. Informed RRT* an advanced version of RRT* that uses heuristics and a cost-to-go estimate to guide the sampling process towards the goal region, significantly improving convergence and optimality of the generated path.
+8. The algorithms use Euclidean distance for node selection and collision checking to ensure the generated paths are collision-free.
+9. The `visualize_map` function in both files generates a plot showing the map, RRT tree, and the final path (if found).
 
 **Customization:**
 - You can modify the `start` and `goal` coordinates in `main.py` to test the algorithms on different start and goal points.
