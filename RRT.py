@@ -174,7 +174,7 @@ class RRTPlanner:
 
         self.visualize_map(title = "RRT")
 
-    def RRT_star(self, n_pts):
+    def RRT_star(self, n_pts, neighbor_size):
         # RRT* algorithm implementation
         self.init_map()
 
@@ -194,7 +194,7 @@ class RRTPlanner:
                     new_node = self.extend_towards_point(nearest_node, new_sample)
                     collision = self.check_collision(new_node, nearest_node)
                 if collision:
-                    neighbors = self.find_neighbors(new_node, 20)
+                    neighbors = self.find_neighbors(new_node, neighbor_size)
                     self.rewire_neighbors(new_node, neighbors)
                     dist = self.euclidean_distance(new_node, self.goal)
                     if dist <= step:
