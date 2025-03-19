@@ -27,6 +27,18 @@
 ## Curve with dent (start from bottom)
 
 ```
+   # Load the map
+    start = (290, 320)
+    goal = (70, 72)
+    map_array = load_map("test_images/curve_with_dent.jpg", 0.3)
 
+```
 
+### multiple hallway
+
+```
+   # Load the map
+    start = (1, 48)
+    goal = (75, 151)
+    map_array = load_map("test_images/multiple_hallway.jpg", 0.3)
 ```
