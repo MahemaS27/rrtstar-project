@@ -23,7 +23,7 @@ def load_map(file_path, resolution_scale):
         
 if __name__ == "__main__":
     # Load the map
-    start = (1, 240)
+    start = (290, 320)
     goal = (70, 72)
     map_array = load_map("test_images/curve_with_dent.jpg", 0.3)
 
@@ -32,4 +32,4 @@ if __name__ == "__main__":
 
     # Search with RRT and RRT*
     # params num points, neighbor_size
-    rrt_planner.RRT_star(2000, 20)
+    rrt_planner.RRT_star(1000, 20)
