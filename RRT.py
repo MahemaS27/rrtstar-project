@@ -4,6 +4,7 @@ import math
 from numpy import random
 from PIL import Image
 from random import randrange
+import time
 
 # Class for each tree node
 class TreeNode:
@@ -180,6 +181,7 @@ class RRTPlanner:
         goal1 = False
         goal_bias = 4
         step = 10
+        start_time = time.time()
         for i in range(n_pts):
             new_sample = self.get_new_sample_point(goal_bias)
             if self.map_array[new_sample.row][new_sample.col] == 0:
@@ -210,5 +212,7 @@ class RRTPlanner:
             print("The length of path is %.2f" % length)
         else:
             print("No path found")
-
+        end_time = time.time()
+        elapsed_time = end_time - start_time
+        print(f"Elapsed time: {elapsed_time} seconds")
         self.visualize_map(title = "RRT*")

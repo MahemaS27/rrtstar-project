@@ -3,9 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from RRT import RRTPlanner
 from informed_RRTstar import Informed_RRTSTAR
-import time
-
-start_time = time.time()
 
 def load_map(file_path, resolution_scale):
     # Load the image with grayscale
@@ -35,7 +32,3 @@ if __name__ == "__main__":
 
     # Search with RRT and RRT*
     rrt_planner.RRT_star(n_pts=1000)
-
-    end_time = time.time()
-    elapsed_time = end_time - start_time
-    print(f"Elapsed time: {elapsed_time} seconds")
