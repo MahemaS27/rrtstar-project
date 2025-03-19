@@ -32,12 +32,9 @@ if __name__ == "__main__":
 
     # Create RRTPlanner object with the loaded map
     rrt_planner = RRTPlanner(map_array, start, goal)
-    Info_RRT_star = Informed_RRTSTAR(map_array, start, goal)
 
     # Search with RRT and RRT*
-    rrt_planner.RRT(n_pts=1000)
     rrt_planner.RRT_star(n_pts=1000)
-    Info_RRT_star.Informed_RRT_star(n_pts=5000)
 
     end_time = time.time()
     elapsed_time = end_time - start_time
