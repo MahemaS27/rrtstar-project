@@ -23,13 +23,13 @@ def load_map(file_path, resolution_scale):
         
 if __name__ == "__main__":
     # Load the map
-    start = (1, 48)
-    goal = (75, 151)
-    map_array = load_map("test_images/multiple_hallway.jpg", 0.3)
+    start = (320, 5)
+    goal = (85, 257)
+    map_array = load_map("test_images/s_curve.jpg", 0.3)
 
     # Create RRTPlanner object with the loaded map
     rrt_planner = RRTPlanner(map_array, start, goal)
 
     # Search with RRT and RRT*
     # params num points, neighbor_size
-    rrt_planner.RRT_star(1000, 20)
+    rrt_planner.RRT_star(5000, 15)
