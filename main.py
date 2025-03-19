@@ -23,12 +23,12 @@ def load_map(file_path, resolution_scale):
         
 if __name__ == "__main__":
     # Load the map
-    start = (250, 30)
-    goal = (20, 200)
-    map_array = load_map("ASU_Map.jpg", 0.3)
+    start = (320, 0)
+    goal = (13, 321)
+    map_array = load_map("test_images/single_narrow.jpg", 0.3)
 
     # Create RRTPlanner object with the loaded map
     rrt_planner = RRTPlanner(map_array, start, goal)
 
     # Search with RRT and RRT*
-    rrt_planner.RRT_star(n_pts=1000)
+    rrt_planner.RRT_star(1000)

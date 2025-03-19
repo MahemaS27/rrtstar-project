@@ -174,7 +174,7 @@ class RRTPlanner:
 
         self.visualize_map(title = "RRT")
 
-    def RRT_star(self, n_pts=1000, neighbor_size=30):
+    def RRT_star(self, n_pts):
         # RRT* algorithm implementation
         self.init_map()
 
