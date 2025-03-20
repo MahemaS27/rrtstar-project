@@ -2,7 +2,6 @@ from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
 from RRT import RRTPlanner
-from informed_RRTstar import Informed_RRTSTAR
 
 def load_map(file_path, resolution_scale):
     # Load the image with grayscale
@@ -23,13 +22,16 @@ def load_map(file_path, resolution_scale):
         
 if __name__ == "__main__":
     # Load the map
-    start = (320, 5)
-    goal = (85, 257)
-    map_array = load_map("test_images/s_curve.jpg", 0.3)
+    start = (290, 320)
+    goal = (70, 72)
+    map_array = load_map("test_images/curve_with_dent.jpg", 0.3)
 
     # Create RRTPlanner object with the loaded map
     rrt_planner = RRTPlanner(map_array, start, goal)
 
     # Search with RRT and RRT*
     # params num points, neighbor_size
-    rrt_planner.RRT_star(5000, 15)
+    rrt_planner.RRT_star(5000, 15, "4")
+    rrt_planner.RRT_star(5000, 15, "5")
+    
+

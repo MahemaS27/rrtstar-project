@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import matplotlib as matplot
 import numpy as np
 import math
 from numpy import random
@@ -105,8 +106,9 @@ class RRTPlanner:
         new_node = TreeNode(int((p1.row + distance_1 * math.cos(theta))), int((p1.col + distance_1 * math.sin(theta))))
         return new_node
 
-    def visualize_map(self, title):
+    def visualize_map(self, title, name):
         # Create a plot to visualize the map, RRT tree, and path
+        matplot.use('Agg')
         fig, ax = plt.subplots(1)
         img = 255 * np.dstack((self.map_array, self.map_array, self.map_array))
         ax.imshow(img)
@@ -134,7 +136,11 @@ class RRTPlanner:
         plt.title(title)
         
         # Show the plot
-        plt.show()
+        save_path = name + '.png'
+        plt.savefig(save_path, format='png')
+
+
+
 
     def RRT(self, n_pts=1000):
         # RRT algorithm implementation
@@ -170,14 +176,15 @@ class RRTPlanner:
             print("It took %d nodes to find the path using RRT" % steps)
             print("The length of path is %.2f" % length)
         else:
+            
             print("No path found")
 
         self.visualize_map(title = "RRT")
 
-    def RRT_star(self, n_pts, neighbor_size):
+    def RRT_star(self, n_pts, neighbor_size, name):
         # RRT* algorithm implementation
         self.init_map()
-
+        print('init map')
         goal1 = False
         goal_bias = 4
         step = 10
@@ -204,15 +211,17 @@ class RRTPlanner:
                     if dist == 0:
                         self.found = True
                         goal1 = False
-
+        print('finishloop')
+        self.visualize_map("RRT*", name)
         if self.found:
+            print(name)
             steps = len(self.vertices) - 2
             length = self.goal.cost
             print("It took %d nodes to find the path using RRT*" % steps)
             print("The length of path is %.2f" % length)
         else:
+            print(name)
             print("No path found")
         end_time = time.time()
         elapsed_time = end_time - start_time
         print(f"Elapsed time: {elapsed_time} seconds")
-        self.visualize_map(title = "RRT*")
