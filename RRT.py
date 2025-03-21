@@ -107,6 +107,7 @@ class RRTPlanner:
         return new_node
 
     def visualize_map(self, title, name):
+        print('visualize')
         # Create a plot to visualize the map, RRT tree, and path
         matplot.use('Agg')
         fig, ax = plt.subplots(1)
@@ -119,6 +120,7 @@ class RRTPlanner:
             plt.plot([node.col, node.parent.col], [node.row, node.parent.row], color='blue')  # Edge color as blue
 
         # Draw the final path if found
+        print('drawing final path')
         if self.found:
             cur = self.goal
             while cur.col != self.start.col and cur.row != self.start.row:
@@ -212,16 +214,20 @@ class RRTPlanner:
                         self.found = True
                         goal1 = False
         print('finishloop')
-        self.visualize_map("RRT*", name)
         if self.found:
             print(name)
             steps = len(self.vertices) - 2
             length = self.goal.cost
             print("It took %d nodes to find the path using RRT*" % steps)
             print("The length of path is %.2f" % length)
+            end_time = time.time()
+            elapsed_time = end_time - start_time
+            print(f"Elapsed time: {elapsed_time} seconds")
+            self.visualize_map("RRT*", name)
         else:
             print(name)
             print("No path found")
-        end_time = time.time()
-        elapsed_time = end_time - start_time
-        print(f"Elapsed time: {elapsed_time} seconds")
+            end_time = time.time()
+            elapsed_time = end_time - start_time
+            print(f"Elapsed time: {elapsed_time} seconds")
+            self.visualize_map("RRT*", name)
