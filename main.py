@@ -34,8 +34,8 @@ if __name__ == "__main__":
     ## add in a bunch of these statements in a loop
 
     for i in range(1,6):
-        rrt_planner.RRT_star(500, 15, str(i))
+        rrt_planner.RRT_star(1000, 15, str(i))
 
-    #rrt_planner.RRT_star(8000, 15, str(5)) 
+    #rrt_planner.RRT_star(1000, 15, str(5)) 
     
 

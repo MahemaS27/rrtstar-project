@@ -106,40 +106,36 @@ class RRTPlanner:
         new_node = TreeNode(int((p1.row + distance_1 * math.cos(theta))), int((p1.col + distance_1 * math.sin(theta))))
         return new_node
 
-    def visualize_map(self, title, name):
-        print('visualize')
-        # Create a plot to visualize the map, RRT tree, and path
-        matplot.use('Agg')
-        fig, ax = plt.subplots(1)
-        img = 255 * np.dstack((self.map_array, self.map_array, self.map_array))
-        ax.imshow(img)
+    def visualize_map(self, title):
+            # Create a plot to visualize the map, RRT tree, and path
+            fig, ax = plt.subplots(1)
+            img = 255 * np.dstack((self.map_array, self.map_array, self.map_array))
+            ax.imshow(img)
 
-        # Draw RRT tree nodes and edges
-        for node in self.vertices[1:-1]:
-            plt.plot(node.col, node.row, markersize=3, marker='o', color='blue')  # Node color as blue
-            plt.plot([node.col, node.parent.col], [node.row, node.parent.row], color='blue')  # Edge color as blue
+            # Draw RRT tree nodes and edges
+            for node in self.vertices[1:-1]:
+                plt.plot(node.col, node.row, markersize=3, marker='o', color='blue')  # Node color as blue
+                plt.plot([node.col, node.parent.col], [node.row, node.parent.row], color='blue')  # Edge color as blue
 
-        # Draw the final path if found
-        print('drawing final path')
-        if self.found:
-            cur = self.goal
-            while cur.col != self.start.col and cur.row != self.start.row:
-                plt.plot([cur.col, cur.parent.col], [cur.row, cur.parent.row], color='red')  # Path color as red
-                cur = cur.parent
-                plt.plot(cur.col, cur.row, markersize=3, marker='o', color='red')  # Node color as red
+            # Draw the final path if found
+            if self.found:
+                cur = self.goal
+                while cur.col != self.start.col and cur.row != self.start.row:
+                    plt.plot([cur.col, cur.parent.col], [cur.row, cur.parent.row], color='red')  # Path color as red
+                    cur = cur.parent
+                    plt.plot(cur.col, cur.row, markersize=3, marker='o', color='red')  # Node color as red
 
-        # Draw start and goal nodes
-        plt.plot(self.start.col, self.start.row, markersize=5, marker='o', color='green')  # Start node color as green
-        plt.text(self.start.col, self.start.row, 'Start', color='black', fontsize=14, va='top', ha='center')  # Start node label in black below the node
-        plt.plot(self.goal.col, self.goal.row, markersize=5, marker='o', color='green')  # Goal node color as green
-        plt.text(self.goal.col, self.goal.row, 'End', color='black', fontsize=14, va='top', ha='center')  # Goal node label in black below the node
+            # Draw start and goal nodes
+            plt.plot(self.start.col, self.start.row, markersize=5, marker='o', color='green')  # Start node color as green
+            plt.text(self.start.col, self.start.row, 'Start', color='black', fontsize=14, va='top', ha='center')  # Start node label in black below the node
+            plt.plot(self.goal.col, self.goal.row, markersize=5, marker='o', color='green')  # Goal node color as green
+            plt.text(self.goal.col, self.goal.row, 'End', color='black', fontsize=14, va='top', ha='center')  # Goal node label in black below the node
 
-        # Add title to the plot
-        plt.title(title)
-        
-        # Show the plot
-        save_path = name + '.png'
-        plt.savefig(save_path, format='png')
+            # Add title to the plot
+            plt.title(title)
+            
+            # Show the plot
+            plt.show()
 
 
 
@@ -223,11 +219,11 @@ class RRTPlanner:
             end_time = time.time()
             elapsed_time = end_time - start_time
             print(f"Elapsed time: {elapsed_time} seconds")
-            self.visualize_map("RRT*", name)
+            #self.visualize_map("RRT*")
         else:
             print(name)
             print("No path found")
             end_time = time.time()
             elapsed_time = end_time - start_time
             print(f"Elapsed time: {elapsed_time} seconds")
-            self.visualize_map("RRT*", name)
+            #self.visualize_map("RRT*")
