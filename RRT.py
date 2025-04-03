@@ -219,7 +219,7 @@ class RRTPlanner:
             end_time = time.time()
             elapsed_time = end_time - start_time
             print(f"Elapsed time: {elapsed_time} seconds")
-            #self.visualize_map("RRT*")
+           # self.visualize_map("RRT*")
         else:
             print(name)
             print("No path found")

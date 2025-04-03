@@ -22,9 +22,9 @@ def load_map(file_path, resolution_scale):
         
 if __name__ == "__main__":
     # Load the map
-    start = (1, 48)
-    goal = (75, 151)
-    map_array = load_map("test_images/multiple_hallway.jpg", 0.3)
+    start = (1, 240)
+    goal = (70, 72)
+    map_array = load_map("test_images/curve_with_dent.jpg", 0.3)
 
     # Create RRTPlanner object with the loaded map
     rrt_planner = RRTPlanner(map_array, start, goal)
@@ -33,9 +33,9 @@ if __name__ == "__main__":
     # params num points, neighbor_size
     ## add in a bunch of these statements in a loop
 
-    for i in range(1,6):
-        rrt_planner.RRT_star(1000, 15, str(i))
+    # for i in range(1,6):
+    #     rrt_planner.RRT_star(1000, 15, str(i))
 
-    #rrt_planner.RRT_star(1000, 15, str(5)) 
+    rrt_planner.RRT_star(5000, 15, str(1)) 
     
 
