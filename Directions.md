@@ -45,6 +45,16 @@
 
 ### jutting obstacles
 
+```
 start = (320, 0)
 goal = (13, 321)
 map_array = load_map("test_images/jutting_obstacles.jpg", 0.3)
+```
+
+### s curve
+
+```
+   start = (320, 5)
+    goal = (85, 257)
+    map_array = load_map("test_images/s_curve.jpg", 0.3)
+```
