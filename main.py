@@ -23,7 +23,6 @@ def load_map(file_path, resolution_scale):
     return map_array        
         
 if __name__ == "__main__":
-    tracemalloc.start()
     # Load the map
     start = (320, 5)
     goal = (85, 257)
@@ -39,10 +38,6 @@ if __name__ == "__main__":
     # for i in range(1,6):
     #     rrt_planner.RRT_star(1000, 15, str(i))
 
-    rrt_planner.RRT_star(5000, 20, str(1))
-    current, peak = tracemalloc.get_traced_memory()
-    print(f"Current memory usage: {current / 1024 / 1024:.1f} MB")
-    print(f"Peak usage: {peak / 1024 / 1024:.1f} MB")
-    tracemalloc.stop() 
+    rrt_planner.RRT_star(5000, 20, str(1)) 
     
 
