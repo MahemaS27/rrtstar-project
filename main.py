@@ -36,6 +36,6 @@ if __name__ == "__main__":
     # for i in range(1,6):
     #     rrt_planner.RRT_star(1000, 15, str(i))
 
-    rrt_planner.RRT_star(5000, 15, str(1)) 
+    rrt_planner.RRT_star(5000, 20, str(1)) 
     
 
