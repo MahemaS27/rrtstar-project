@@ -6,7 +6,7 @@ from numpy import random
 from PIL import Image
 from random import randrange
 import time
-import ctypes
+# import ctypes
 import os
 
 # Class for each tree node
@@ -30,23 +30,23 @@ class RRTPlanner:
         self.vertices = []                    # List of nodes in the RRT tree
         self.found = False                    # Found flag to indicate if the goal is reached
 
-        # needed to call C code
-        lib_path = os.path.abspath("rrt_star.so")
-        self.rrt_star_lib = ctypes.CDLL(lib_path)
-        # Define argument/return types of the C function
-        self.rrt_star_lib.run_rrt_star.argtypes = [
-            ctypes.POINTER(ctypes.c_ubyte),  # map array (flattened)
-            ctypes.c_int,  # rows
-            ctypes.c_int,  # cols
-            ctypes.c_int,  # start row
-            ctypes.c_int,  # start col
-            ctypes.c_int,  # goal row
-            ctypes.c_int,  # goal col
-            ctypes.c_int,  # num points
-            ctypes.c_int,   # neighbor size
-            ctypes.c_char_p # name
-        ]
-        self.rrt_star_lib.run_rrt_star.restype = ctypes.c_int
+        # # needed to call C code
+        # lib_path = os.path.abspath("rrt_star.so")
+        # self.rrt_star_lib = ctypes.CDLL(lib_path)
+        # # Define argument/return types of the C function
+        # self.rrt_star_lib.run_rrt_star.argtypes = [
+        #     ctypes.POINTER(ctypes.c_ubyte),  # map array (flattened)
+        #     ctypes.c_int,  # rows
+        #     ctypes.c_int,  # cols
+        #     ctypes.c_int,  # start row
+        #     ctypes.c_int,  # start col
+        #     ctypes.c_int,  # goal row
+        #     ctypes.c_int,  # goal col
+        #     ctypes.c_int,  # num points
+        #     ctypes.c_int,   # neighbor size
+        #     ctypes.c_char_p # name
+        # ]
+        # self.rrt_star_lib.run_rrt_star.restype = ctypes.c_int
 
     def init_map(self):
         self.found = False
@@ -203,74 +203,74 @@ class RRTPlanner:
     def RRT_star(self, n_pts, neighbor_size, name):
 
         map_flat = self.map_array.flatten().astype(np.uint8)
-        c_map = map_flat.ctypes.data_as(ctypes.POINTER(ctypes.c_ubyte))
+        # c_map = map_flat.ctypes.data_as(ctypes.POINTER(ctypes.c_ubyte))
 
-        # Call the C function
-        result = self.rrt_star_lib.run_rrt_star(
-            c_map,
-            self.size_row,
-            self.size_col,
-            self.start.row,
-            self.start.col,
-            self.goal.row,
-            self.goal.col,
-            n_pts,
-            neighbor_size,
-            name.encode('utf-8')
-        )
+        # # Call the C function
+        # result = self.rrt_star_lib.run_rrt_star(
+        #     c_map,
+        #     self.size_row,
+        #     self.size_col,
+        #     self.start.row,
+        #     self.start.col,
+        #     self.goal.row,
+        #     self.goal.col,
+        #     n_pts,
+        #     neighbor_size,
+        #     name.encode('utf-8')
+        # )
 
-        if result == 1:
-            print("RRT* path found (from C)")
-            self.found = True
-#             self.visualize_map("RRT*")
-        else:
-            print("No path found (from C)")
-#             self.visualize_map("RRT*")
+#         if result == 1:
+#             print("RRT* path found (from C)")
+#             self.found = True
+# #             self.visualize_map("RRT*")
+#         else:
+#             print("No path found (from C)")
+# #             self.visualize_map("RRT*")
 
         # RRT* algorithm implementation
-#         self.init_map()
-#         print('init map')
-#         goal1 = False
-#         goal_bias = 4
-#         step = 10
-#         start_time = time.time()
-#         for i in range(n_pts):
-#             new_sample = self.get_new_sample_point(goal_bias)
-#             if self.map_array[new_sample.row][new_sample.col] == 0:
-#                 continue
-#             else:
-#                 nearest_node = self.get_nearest_neighbor(new_sample)
-#                 if goal1:
-#                     new_node = self.goal
-#                 else:
-#                     new_node = self.extend_towards_point(nearest_node, new_sample)
-#                     collision = self.check_collision(new_node, nearest_node)
-#                 if collision:
-#                     neighbors = self.find_neighbors(new_node, neighbor_size)
-#                     self.rewire_neighbors(new_node, neighbors)
-#                     dist = self.euclidean_distance(new_node, self.goal)
-#                     if dist <= step:
-#                         goal1 = True
-#                     self.vertices.append(new_node)
-#
-#                     if dist == 0:
-#                         self.found = True
-#                         goal1 = False
-#         print('finishloop')
-#         if self.found:
-#             print(name)
-#             steps = len(self.vertices) - 2
-#             length = self.goal.cost
-#             print("It took %d nodes to find the path using RRT*" % steps)
-#             print("The length of path is %.2f" % length)
-#             end_time = time.time()
-#             elapsed_time = end_time - start_time
-#             print(f"Elapsed time: {elapsed_time} seconds")
-#            # self.visualize_map("RRT*")
-#         else:
-#             print(name)
-#             print("No path found")
-#             end_time = time.time()
-#             elapsed_time = end_time - start_time
-#             print(f"Elapsed time: {elapsed_time} seconds")
-#             self.visualize_map("RRT*")
+        self.init_map()
+        print('init map')
+        goal1 = False
+        goal_bias = 4
+        step = 10
+        start_time = time.time()
+        for i in range(n_pts):
+            new_sample = self.get_new_sample_point(goal_bias)
+            if self.map_array[new_sample.row][new_sample.col] == 0:
+                continue
+            else:
+                nearest_node = self.get_nearest_neighbor(new_sample)
+                if goal1:
+                    new_node = self.goal
+                else:
+                    new_node = self.extend_towards_point(nearest_node, new_sample)
+                    collision = self.check_collision(new_node, nearest_node)
+                if collision:
+                    neighbors = self.find_neighbors(new_node, neighbor_size)
+                    self.rewire_neighbors(new_node, neighbors)
+                    dist = self.euclidean_distance(new_node, self.goal)
+                    if dist <= step:
+                        goal1 = True
+                    self.vertices.append(new_node)
+
+                    if dist == 0:
+                        self.found = True
+                        goal1 = False
+        print('finishloop')
+        if self.found:
+            print(name)
+            steps = len(self.vertices) - 2
+            length = self.goal.cost
+            print("It took %d nodes to find the path using RRT*" % steps)
+            print("The length of path is %.2f" % length)
+            end_time = time.time()
+            elapsed_time = end_time - start_time
+            print(f"Elapsed time: {elapsed_time} seconds")
+           # self.visualize_map("RRT*")
+        else:
+            print(name)
+            print("No path found")
+            end_time = time.time()
+            elapsed_time = end_time - start_time
+            print(f"Elapsed time: {elapsed_time} seconds")
+            self.visualize_map("RRT*")
