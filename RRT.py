@@ -55,13 +55,11 @@ class RRTPlanner:
         self.vertices = []
         self.vertices.append(self.start)
 
-    @profile
     def euclidean_distance(self, node1, node2):
         # Calculate Euclidean distance between two nodes
         distance = math.sqrt((node1.row - node2.row) ** 2 + (node1.col - node2.col) ** 2)
         return distance
 
-    @profile
     def check_collision(self, node1, node2):
         # Check if there is a collision between two nodes by checking the points in between
         points_between = zip(np.linspace(node1.row, node2.row, dtype=int),
@@ -71,7 +69,6 @@ class RRTPlanner:
                 return False
         return True
 
-    @profile
     def get_new_sample_point(self, goal_bias):
         # Generate a new sample point, with a probability (goal_bias) of picking the goal point
         a = randrange(100)
@@ -95,7 +92,6 @@ class RRTPlanner:
         freeneighbors = [neighbor for neighbor in neighbors if self.check_collision(neighbor, new_node)]
         return freeneighbors
 
-    @profile
     def rewire_neighbors(self, new_node, neighbors):
         # Rewire neighbors of a new node to improve the path
         checkdis = []
@@ -205,7 +201,7 @@ class RRTPlanner:
 
         self.visualize_map(title = "RRT")
 
-
+    @profile
     def RRT_star(self, n_pts, neighbor_size, name):
 
         map_flat = self.map_array.flatten().astype(np.uint8)
